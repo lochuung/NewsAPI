@@ -25,7 +25,9 @@ public class NewsService implements INewsService {
     @Override
     public NewsDTO save(NewsDTO newsDTO) {
         if (newsDTO.getId() != null) {
-            NewsEntity oldNewsEntity = newsRepository.findOneById(newsDTO.getId());
+            NewsEntity oldNewsEntity = newsRepository
+                    .findById(newsDTO.getId())
+                    .orElseThrow(() -> new RuntimeException("This news not found"));
             newsDTO.setCreatedDate(oldNewsEntity.getCreatedDate());
             newsDTO.setCreatedBy(oldNewsEntity.getCreatedBy());
         }
@@ -57,7 +59,9 @@ public class NewsService implements INewsService {
 
     @Override
     public NewsDTO findOneById(Long id) {
-        NewsEntity news = newsRepository.findOneById(id);
+        NewsEntity news = newsRepository
+                .findById(id)
+                .orElseThrow(() -> new RuntimeException("This news not found"));
         return converter.toDTO(news);
     }
 }

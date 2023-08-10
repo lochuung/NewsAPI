@@ -1,4 +1,4 @@
-package com.huuloc.newsapi.api.web;
+package com.huuloc.newsapi.api;
 
 import com.huuloc.newsapi.dto.NewsDTO;
 import com.huuloc.newsapi.service.imp.NewsService;
