@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class NewsAPI {
     @Autowired
@@ -15,6 +17,16 @@ public class NewsAPI {
     public NewsDTO doPost(@RequestBody NewsDTO newsDTO) {
         newsDTO.setId(null);
         return newsService.save(newsDTO);
+    }
+
+    @GetMapping("/api/news")
+    public List<NewsDTO> doGet() {
+        return newsService.findAll();
+    }
+
+    @GetMapping("/api/news/{id}")
+    public NewsDTO doGetOne(@PathVariable("id") Long id) {
+        return newsService.findOneById(id);
     }
 
     @PutMapping("api/news/{id}")

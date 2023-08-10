@@ -24,6 +24,12 @@ public class NewsService implements INewsService {
 
     @Override
     public NewsDTO save(NewsDTO newsDTO) {
+        if (newsDTO.getId() != null) {
+            NewsEntity oldNewsEntity = newsRepository.findOneById(newsDTO.getId());
+            newsDTO.setCreatedDate(oldNewsEntity.getCreatedDate());
+            newsDTO.setCreatedBy(oldNewsEntity.getCreatedBy());
+        }
+
         NewsEntity newsEntity = converter.toEntity(newsDTO);
 
         CategoryEntity categoryEntity = categoryRepository.findOneByCode(newsDTO.getCategoryCode());
@@ -43,6 +49,15 @@ public class NewsService implements INewsService {
 
     @Override
     public List<NewsDTO> findAll() {
-        return null;
+        List<NewsEntity> newsEntities = newsRepository.findAll();
+        return newsEntities.stream()
+                .map(item -> converter.toDTO(item))
+                .toList();
+    }
+
+    @Override
+    public NewsDTO findOneById(Long id) {
+        NewsEntity news = newsRepository.findOneById(id);
+        return converter.toDTO(news);
     }
 }

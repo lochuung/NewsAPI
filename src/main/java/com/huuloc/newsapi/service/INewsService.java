@@ -10,4 +10,5 @@ public interface INewsService {
     void delete(Long[] ids);
 
     List<NewsDTO> findAll();
+    NewsDTO findOneById(Long id);
 }
