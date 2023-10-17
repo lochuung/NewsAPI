@@ -4,7 +4,7 @@ import com.huuloc.newsapi.dto.NewsDTO;
 
 import java.util.List;
 
-public interface INewsService {
+public interface NewsService {
     NewsDTO save(NewsDTO newsDTO);
 
     void delete(Long[] ids);

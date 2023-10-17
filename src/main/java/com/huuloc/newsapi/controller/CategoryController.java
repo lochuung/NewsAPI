@@ -1,36 +1,36 @@
-package com.huuloc.newsapi.api;
+package com.huuloc.newsapi.controller;
 
 import com.huuloc.newsapi.dto.CategoryDTO;
-import com.huuloc.newsapi.service.imp.CategoryService;
+import com.huuloc.newsapi.service.imp.CategoryServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class CategoryAPI {
+public class CategoryController {
     @Autowired
-    private CategoryService categoryService;
+    private CategoryServiceImp categoryServiceImp;
 
     @GetMapping("/api/category")
     public List<CategoryDTO> doGet() {
-        return categoryService.findAll();
+        return categoryServiceImp.findAll();
     }
 
     @PostMapping("/api/category")
     public CategoryDTO doPost(@RequestBody CategoryDTO categoryDTO) {
-        return categoryService.save(categoryDTO);
+        return categoryServiceImp.save(categoryDTO);
     }
 
     @PutMapping("/api/category/{id}")
     public CategoryDTO doPut(@RequestBody CategoryDTO categoryDTO, @PathVariable("id") Long id) {
         categoryDTO.setId(id);
         System.out.println(categoryDTO);
-        return categoryService.save(categoryDTO);
+        return categoryServiceImp.save(categoryDTO);
     }
 
     @DeleteMapping("/api/category")
     public void delete(Long[] ids) {
-        categoryService.delete(ids);
+        categoryServiceImp.delete(ids);
     }
 }

@@ -1,17 +1,16 @@
-package com.huuloc.newsapi.api;
+package com.huuloc.newsapi.controller;
 
 import com.huuloc.newsapi.dto.NewsDTO;
-import com.huuloc.newsapi.service.imp.NewsService;
+import com.huuloc.newsapi.service.imp.NewsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class NewsAPI {
+public class NewsController {
     @Autowired
-    private NewsService newsService;
+    private NewsServiceImp newsService;
 
     @PostMapping("/api/news")
     public NewsDTO doPost(@RequestBody NewsDTO newsDTO) {

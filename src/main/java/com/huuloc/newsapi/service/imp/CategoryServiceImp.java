@@ -4,14 +4,13 @@ import com.huuloc.newsapi.converter.CategoryConverter;
 import com.huuloc.newsapi.dto.CategoryDTO;
 import com.huuloc.newsapi.entity.CategoryEntity;
 import com.huuloc.newsapi.repository.CategoryRepository;
-import com.huuloc.newsapi.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CategoryService implements ICategoryService {
+public class CategoryServiceImp implements com.huuloc.newsapi.service.CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
     @Autowired

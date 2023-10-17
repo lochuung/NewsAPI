@@ -6,15 +6,13 @@ import com.huuloc.newsapi.entity.CategoryEntity;
 import com.huuloc.newsapi.entity.NewsEntity;
 import com.huuloc.newsapi.repository.CategoryRepository;
 import com.huuloc.newsapi.repository.NewsRepository;
-import com.huuloc.newsapi.service.INewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
-public class NewsService implements INewsService {
+public class NewsServiceImp implements com.huuloc.newsapi.service.NewsService {
     @Autowired
     private CategoryRepository categoryRepository;
     @Autowired
